@@ -80,6 +80,7 @@ class DuplicateFinder(object):
                 print('')
             return 0
 
+
 class DuplicateKeyFinder(DuplicateFinder):
     """Duplicate Key Finder."""
 

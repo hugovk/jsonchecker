@@ -31,7 +31,7 @@ class DuplicateKeyFinderTest(DuplicateFinderTest):
 
     def setUp(self):
         """Set up."""
-        self.finder =jsonchecker.DuplicateKeyFinder()
+        self.finder = jsonchecker.DuplicateKeyFinder()
 
     def test_check_file(self):
         """Test there are no errors in all known good data files."""
