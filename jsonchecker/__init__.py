@@ -42,7 +42,8 @@ class DuplicateKeyFinder(object):
         else:
             files = [directory]
         for fname in files:
-            if fname.startswith('.'):
+            first_directory = fname.split(os.path.sep)[0]
+            if first_directory == '.':
                 continue
             if os.path.isdir(fname):
                 self.check_directory(fname)
