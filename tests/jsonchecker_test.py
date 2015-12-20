@@ -54,6 +54,18 @@ class DuplicateValueFinderTest(DuplicateFinderTest):
         """Set up."""
         self.finder = jsonchecker.DuplicateValueFinder()
 
+    def test_dupes_in_list_found(self):
+        """Test returns duplicates from a list."""
+        input = ["a", "b", "a"]
+        output = self.finder.dupes_in_list(input)
+        self.assertEqual(output, ["a"])
+
+    def test_dupes_in_list_not_found(self):
+        """Test returns empty list when no duplicates."""
+        input = ["a", "b", "c"]
+        output = self.finder.dupes_in_list(input)
+        self.assertEqual(output, [])
+
     def test_check_file(self):
         """Test there are no errors in all known good data files."""
         finder = self.check_directory_helper(self.finder, self.path('testdata/good'))

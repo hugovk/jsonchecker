@@ -7,7 +7,8 @@ import json
 import os
 import sys
 
-from collections import defaultdict
+from collections import defaultdict, Counter
+
 
 
 class DuplicateFinder(object):
@@ -112,17 +113,8 @@ class DuplicateValueFinder(DuplicateFinder):
 
     def dupes_in_list(self, l):
         """Return hashable duplicates from this list."""
-        seen = set()
-        seen_twice = set()
-        # Adds all elements it doesn't know yet to seen and
-        # adds all others to seen_twice
-        for x in l:
-            if self.hashable(x):
-                if x in seen:
-                    seen_twice.add(x)
-                else:
-                    seen.add(x)
-        return list(seen_twice)
+        stuff = [t for t in l if self.hashable(t)]
+        return [item for item, count in Counter(stuff).items() if count > 1]
 
     def checker(self, seq, fname):
         """Check routine."""
