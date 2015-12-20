@@ -37,7 +37,7 @@ class DuplicateKeyFinder(object):
         """Check one directory."""
         directory = os.path.abspath(directory)
         if os.path.isdir(directory):
-            last_directory = os.path.basename(os.path.normpath(directory))
+            last_directory = os.path.basename(directory)
             if last_directory.startswith("."):
                 return
             files = [os.path.join(directory, fname) for fname in os.listdir(directory)]
